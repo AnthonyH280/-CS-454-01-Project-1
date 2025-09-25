@@ -5,7 +5,7 @@ Started by downloading ubuntu for Windows as other options did not work
 	1)- Configured AWS in Ubuntu using the CLI " aws configure " and inputting 
 		1.) AWS Access Key:
 		2.) AWS Secret Access Key: 
-		3.) Domain region name: us-east-2
+		3.) Domain region name: us-east-2b
 		4.) Default output format: text
 
 	2)- After that replace the placeholder info in the CLI example with appropriate info.
