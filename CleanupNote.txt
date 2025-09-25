@@ -1,0 +1,2 @@
+Went to AWS EC2s, and terminated the instance using the 
+"instance state" button.
