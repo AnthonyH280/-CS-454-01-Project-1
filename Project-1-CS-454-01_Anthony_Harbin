@@ -1,0 +1,54 @@
+AMI_ID=ami-0634f3c109dcdc659 
+SUBNET_ID=subnet-019ea57e237a6c1fa
+SG_ID=sg-0e7a0e2c55720ae39 
+KEY_NAME=project_1
+
+aws ec2 run-instances \
+ --image-id $AMI_ID \
+ --count 1 --instance-type t3.micro \
+ --key-name $KEY_NAME \
+ --security-group-ids $SG_ID \
+ --subnet-id $SUBNET_ID \
+ --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=project1-AnthonyH}]'
+
+# Get the public IP
+aws ec2 describe-instances \
+  --filters "Name=tag:Name,Values=project1-AnthonyH" \
+  --query "Reservations[*].Instances[*].PublicIpAddress" \
+  --output text
+
+# Linux/Mac
+chmod 400 project_1.pem
+ssh -i project_1.pem ec2-user@<PUBLIC_IP> # Amazon Linux
+# or: ssh -i project_1.pem ubuntu@<PUBLIC_IP> # Ubuntu
+# Update & install Node.js (choose one approach)
+sudo yum update -y && sudo yum install -y nodejs npm # Amazon Linux extras may be needed
+# Ubuntu example:
+sudo apt update && sudo apt install -y nodejs npm
+
+mkdir -p ~/p1 && cd ~/p1
+npm init -y
+npm install express morgan
+
+cat > server.js <<'EOF'
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+app.use(morgan('combined'));
+app.get('/convert', (req, res) => {
+const lbs = Number(req.query.lbs);
+if (req.query.lbs === undefined || Number.isNaN(lbs)) {
+return res.status(400).json({ error: 'Query param lbs is required and must be a number' });
+
+}
+if (!Number.isFinite(lbs) || lbs < 0) {
+return res.status(422).json({ error: 'lbs must be a non-negative, finite number' });
+}
+const kg = Math.round(lbs * 0.45359237 * 1000) / 1000;
+return res.json({ lbs, kg, formula: 'kg = lbs * 0.45359237' });
+});
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`listening on ${port}`));
+EOF
+
+node server.js
