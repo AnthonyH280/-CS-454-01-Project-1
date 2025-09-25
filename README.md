@@ -1,6 +1,7 @@
 # -CS-454-01-Project-1
 Part-A:
 Started by downloading ubuntu for Windows as other options did not work
+
 	1)- Configured AWS in Ubuntu using the CLI " aws configure " and inputting 
 		1.) AWS Access Key:
 		2.) AWS Secret Access Key: 
