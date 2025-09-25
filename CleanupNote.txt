@@ -1,2 +1,3 @@
 Went to AWS EC2s, and terminated the instance using the 
-"instance state" button.
+"instance state" button. Also deleted any and all keys assoicated with
+this project.
