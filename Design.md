@@ -26,9 +26,8 @@ Follow provided guide in order to complete project.
 
 2-Afterwards the user will input the code required for setting up the node server and convert lbs to kg
 
-3A-In a second terminal and give a CLI " curl "http://localhost:8080/convert?lbs=150" " so that it converts
-3B-THough it was suppose to be able to work with CLI " 'http://<PUBLIC_IP>:8080/convert?lbs=150' ", but for some reason it never worked. 
-
+3-In the web browser input " http://<PUBLIC_IP>:8080/convert?lbs=150 " so that it converts
+ 
 4-Run it as a service using provided CLI commands.
 
 5-Clean it up by terminatiting the instance.
@@ -38,3 +37,4 @@ Follow provided guide in order to complete project.
 Considered using an Ubuntu VM instead of just Ubuntu terminal, as I believe that may have
   been causing an issue with with the key being used but not in its "true" memory.
   Unfortunately I came to that idea a bit too late, and I am having trouble getting the VM to work.
+
