@@ -27,7 +27,7 @@ Part-D:
 1.) Use the CLI " sudo nano /etc/systemd/system/p1.service " in Amazon Linux
 
 2.) When a menu pops up copy and paste :
-"
+```
 [Unit]
 Description=CS454 Project 1 Node.js Service
 After=network.target
@@ -41,8 +41,8 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-"
-into the menu. Obviously without the quotaion marks.
+```
+into the menu.
 
 3.) Then save it by pressing Ctrl+O to save, then Enter to confirm, and Ctrl+X to exit the editor. 
 After that it should be working
