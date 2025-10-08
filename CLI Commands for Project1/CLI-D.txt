@@ -1,0 +1,5 @@
+
+sudo nano /etc/systemd/system/p1.service
+
+sudo systemctl enable --now p1
+sudo systemctl status p1 --no-pager

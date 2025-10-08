@@ -1,0 +1,16 @@
+AMI_ID=ami-xxxxxxxxxxxxxxxxx  # Amazon Linux 2 or Ubuntu
+SUBNET_ID=subnet-xxxxxxxxxxxxx # any public subnet
+SG_ID=sg-xxxxxxxxxxxxxxxxx  # must allow 22 and 80
+KEY_NAME=MyKeyPair
+
+aws ec2 run-instances \
+--image-id $AMI_ID \
+--count 1 --instance-type t3.micro \
+--key-name $KEY_NAME \
+--security-group-ids $SG_ID \
+--subnet-id $SUBNET_ID \
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=cs454-p1}]'
+
+# Get the public IP
+aws ec2 describe-instances --filters 'Name=tag:Name,Values=cs454-p1' \
+--query 'Reservations[0].Instances[0].PublicIpAddress' --output text

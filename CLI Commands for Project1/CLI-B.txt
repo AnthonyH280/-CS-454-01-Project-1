@@ -1,0 +1,7 @@
+
+chmod 400 project.pem
+ssh -i project.pem ec2-user@<PUBLIC_IP> # Amazon Linux
+
+
+
+sudo yum update -y && sudo yum install -y nodejs npm # Amazon Linux extras may be needed
