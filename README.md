@@ -26,20 +26,23 @@ Part-C:
 Part-D:  
 1.) Use the CLI " sudo nano /etc/systemd/system/p1.service " in Amazon Linux
 
-2.) When a menu pops up copy and paste :" [Unit]
-										  Description=CS454 Project 1 Node.js Service
-										  After=network.target
+2.) When a menu pops up copy and paste :
 
-										  [Service]
-										  Type=simple
-										  User=ec2-user
-										  WorkingDirectory=/home/ec2-user/p1
-									      ExecStart=/usr/bin/node /home/ec2-user/p1/server.js
-										  Restart=on-failure
+[Unit]
+Description=CS454 Project 1 Node.js Service
+After=network.target
 
-										  [Install]
-										  WantedBy=multi-user.target
-" into the menu. Obviously without the quotaion marks.
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/p1
+ExecStart=/usr/bin/node /home/ec2-user/p1/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+into the menu. Obviously without the quotaion marks.
 
 3.) Then save it by pressing Ctrl+O to save, then Enter to confirm, and Ctrl+X to exit the editor. 
 After that it should be working
